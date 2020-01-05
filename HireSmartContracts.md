@@ -29,10 +29,18 @@ It is my belief that long term Smart Contracts will merely be "hired when requir
 
 Which begs the question surely there is value as there will be an amount of bitcoin "locked in Ethereum" at any one time in order to execute smart contracts. Well not quite as out architecture now looks like this: 
 
-![Architecture 1](/assets/arch1.png)
+
+
+![Architecture 1](/Users/pwinn/code/humansinstitute/BitcoinForHumans/assets/arch1.png)
+
+
 
 Which means we have three sperate areas for value to acrue:
 
 1) Value Store: Where people are storing their value longer term.
 2) Interop Process: How do we move across from one environment to another.
 3) Execution Environment: How do we secure funds and pay for execution.
+
+It my belief that Bitcoin provides the best monetary qualities required for a Value Store.  So the next question would be were we to use Bitcoin inside a smart contract, would it naturally 
+
+
