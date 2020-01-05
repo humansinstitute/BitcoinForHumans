@@ -31,7 +31,7 @@ Which begs the question surely there is value as there will be an amount of bitc
 
 
 
-![Architecture 1](/Users/pwinn/code/humansinstitute/BitcoinForHumans/assets/arch1.png)
+![Architecture 1](/assets/arch1.png)
 
 
 
