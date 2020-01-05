@@ -25,4 +25,14 @@ I don't hold the belief that a smart contract are not useufl. Hell Lightning is 
 
 > The $ or the asset holds the value in a traditional contract, not the paper.
 
-It is my belief that long term Smart Contracts will merely be "hired when required"
+It is my belief that long term Smart Contracts will merely be "hired when required" and as such there's no real need to acrue value in the utility asset, you just biy it when required - i.e. you just pay Bitcoin for the execution of the contract.
+
+Which begs the question surely there is value as there will be an amount of bitcoin "locked in Ethereum" at any one time in order to execute smart contracts. Well not quite as out architecture now looks like this: 
+
+![Architecture 1](/assets/arch1.png)
+
+Which means we have three sperate areas for value to acrue:
+
+1) Value Store: Where people are storing their value longer term.
+2) Interop Process: How do we move across from one environment to another.
+3) Execution Environment: How do we secure funds and pay for execution.
