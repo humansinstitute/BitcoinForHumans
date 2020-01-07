@@ -18,10 +18,10 @@ Example use cases would include:
 
 
 
-![Lockbox_1.png](/Users/pwinn/WinnBox/Code/hi/BitcoinForHumans/lockbox/Lockbox_1.png)
+![Lockbox_1.png](Lockbox_1.png)
 
 How is this enforced.
 
-![Lockbox_2.png](/Users/pwinn/WinnBox/Code/hi/BitcoinForHumans/lockbox/Lockbox_2.png)
+![Lockbox_2.png](Lockbox_2.png)
 
 
