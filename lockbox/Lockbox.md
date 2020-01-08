@@ -2,7 +2,7 @@
 
 #### A framework for offchain reliably enforced, trust minimised smart contract enforcement in bitcoin.
 
-***Note*** This is provided as an unfinished high level concept seeking feedback! 
+***Note*** This is provided as an unfinished high level concept seeking feedback, please bear with me, this went from brain to page in one sitting over Christmas! 
 
 ---
 
