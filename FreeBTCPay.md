@@ -23,5 +23,3 @@ export BTCPAY_ENABLE_SSH=true
 ```
 
 ![](/Users/pwinn/code/humansinstitute/BitcoinForHumans/assets/2020-01-07-10-08-01-image.png)
-
-
