@@ -87,7 +87,7 @@ cond2(yes)->op4->e2
 cond2(no)->op5->op6->e3
 ```
 
-![Lockbox Flowchart](/Users/pwinn/WinnBox/Notes/HI/GIT/BitcoinForHumans/lockbox/Lockbox-Flow.png)
+![Lockbox Flowchart](Lockbox-Flow.png)
 
 As we can be seen there are at least three actors required in order to execute this contract:
 
@@ -255,7 +255,7 @@ We call this an orchestration market as the maner in which you provide this serv
 
 We could imagine from the above example that Dave (see below), might be able to out compete the world computer in terms of price and it seems like he'd be a natural choice to resolve a bet on a game of football, so lets look at how we'd accompllish this before we start to explore the potential trade offs (I know seems like there could be nothing that goes wrong here).
 
-![Dave wearing his new shorts](/Users/pwinn/WinnBox/Notes/HI/GIT/BitcoinForHumans/lockbox/DaveShorts.png)
+![Dave wearing his new shorts](DaveShorts.png)
 
 So in this instance we have the followig scenario.
 
