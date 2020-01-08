@@ -2,13 +2,13 @@
 
 #### A framework for offchain reliably enforced, trust minimised smart contract enforcement in bitcoin.
 
-***Note*** This is provided as an unfinished high level concept seeking feedback, please bear with me, this went from brain to page in one sitting over Christmas! 
+***Note*** This is provided as an unfinished high level concept seeking feedback! 
 
 ---
 
 #### The Tl;dr's Tl;dr
 
-A lockbox creates a pre-approved set of transactions and fee payments which can reliably be enforced by off chain service providers.  This could facilitate a services market for Oracle / Enforcement services without the requirement for tokens / altcoins.
+A lockbox creates a pre-approved set of transactions and fee payments which can reliably be enforced by off chain service providers.  This could facilitate a market for Oracle / Enforcement services without the requirement for tokens / altcoins.
 
 ---
 
@@ -16,37 +16,41 @@ A lockbox creates a pre-approved set of transactions and fee payments which can 
 
 At a high level the concept works as follows:
 
-* The Lockbox interactive signing protocol would allow peers to agree to the timing and enforcement terms as part of an interactive contract setup.
+* The Lockbox interactive signing protocol would allow peers to agree to the timing and enforcement terms as part of an interactive contract setup, which results in payments being made.
 
-* A set of pre-signed transaction are generated which incentive honest settlement in peer-to-peer contracts / payments.
+* A set of pre-signed transaction are generated which incentivise honest settlement in peer-to-peer contracts / payments.
 
-* These transactions provide a ***hook*** for off-chain "enforcement service providers" to enforce contracts for a fee.
+* These transactions provide a ***hook*** for off-chain "enforcement by service providers" to enforce contracts for a fee.
 
-* A market of enforcement services can offer services at differentiated price points based on trade offs around privacy, security, trustlessness, speed and counter party risk.
+* A market of enforcement services can offer services at differentiated price points competing on trade offs around privacy, security, trustlessness, speed and counter party risk.
 
-* The enforcement service will have arbitration rights on the contract and must therefore have real world knowledge if required about the contract outcomes.
+* The enforcement service is effectively being trusted to correctly sign and broadcast a transaction which includes the result of an outcome.
 
-* Non-economic 'side chains' can provide a good balance of specialist knowledge, verification, redundancy and cost.
+* The service provider must therefore have real world knowledge of the contract outcomes as such we expect this to develop a marketplace in which various businesses would compete.
 
-* Final settlement of contracts would be dependant on inclusion in bitcoin blocks, however deployment in channel factories allows the instant settlement of contracts thorugh lightning channels offchain. 
+* Non-economic 'side-chains' which sign specific "facts" can provide a good balance of specialist knowledge, verification, redundancy and cost.
+
+* Final settlement of contracts would be dependant on inclusion in bitcoin blocks, however, deployment in channel factories allows the instant settlement of contracts thorugh lightning channels offchain. 
 
 * No tokens are required.  All transactions are pre-signed and settle via lightning (require's eltoo).
 
-We believe this approach which respects the decoupling **money** from **contracts** will be essential in allowing agents to transact in a free market for smart contract execution at efficient pricing points. 
+I believe this approach which respects the decoupling **money** from **contracts** will be essential in allowing agents to transact in a free market for smart contract execution at efficient pricing points. 
 
 ---
 
 ### The Lockbox
 
-The proposal is to have both pre-commit to a set of transactions which could be settled to the bitcoin blockchain which include both the payments as collatoral and an agreed bond.  
+The proposal is to have all parties in a contract pre-commit to a set of transactions which could be settled to the bitcoin blockchain.  
 
-These outputs will ensure that money is correctly paid in line with the agreed terms at the agreed times.
+This transaction set includes all relevant outputs as part of the redemption script, payment collatoral and an agreed bond/fee.  
 
-As the contract concludes (specified in blocktime) either party can broadcast a secret in order to cede the bet to the other party, allowing the other party to sign an output and claim the btc.
+These outputs will ensure that money is correctly paid in line with the agreed terms of a deterministic contract at the agreed times.
 
-In the case in which parties disagree, at an agreed timelock a set of arbitration transactions (held with an oracle - more details later) can be broadcast which allow the Oracle to claim the bond  of the losing party and pay out the bet for the winning party.
+As the contract concludes (specified in blocktime) either party can sign a transaction in order to cede the bet to the other party in a cooperative manner. This is simply the equivalent to a user confirming a payment in a lightning channel, by updating the state.
 
-In the case where this fails a third timelocked set of transactions will default to a fallback set of outputs e.g. return funds, donate to Tor/BTCPay etc.
+In the case in which parties disagree, at an agreed timelock a set of arbitration transactions (held with a 3rd party enforcement service provider - my god!) can be broadcast which allow this service provider to claim a fee (a bond posted to the contract)  and pay out the contract correctly.
+
+In the case where this transaction isn't broadcast a third set of timelocked transactions could provide a fallback state for example e.g. return funds, donate to Tor/BTCPay etc.
 
 The following diagram shows this flow.
 
@@ -87,17 +91,19 @@ cond2(yes)->op4->e2
 cond2(no)->op5->op6->e3
 ```
 
-![Lockbox Flowchart](Lockbox-Flow.png)
+![Lockbox Flowchart](/Users/pwinn/WinnBox/Notes/HI/GIT/BitcoinForHumans/lockbox/Lockbox-Flow.png)
 
-As we can be seen there are at least three actors required in order to execute this contract:
+A minimum of three parties are required in order to execute this contract:
 
 - **Party A:** Provides funds/bond, generates pre-images and pre-signs transactions.
 
 - **Party B:** Provides funds/bond, generates pre-images and pre-signs transactions.
 
-- **Oracle:** Service provider who holds a set of punishment transactions and can earn bond fees.
+- **Oracle:** Service provider who holds a set of punishment transactions and can earn bond fees, if these are required at a future point in time.
 
-This closely mimics a real life "betting" arrangement in which a third party is selected to  hold funds in escrow and ensure the payout to the winner.  In this case we incentivise  indivudal parties to resolve contracts gracefully in order to avoid losing their bond.
+This closely mimics a real life "betting" arrangement in which a third party is selected to  hold funds in escrow and ensure the payout to the winner. 
+
+ In this case we incentivise  indivudal parties to resolve contracts gracefully in order to avoid losing their bond.
 
 This is setup is achieved through the following transaction construction.
 
@@ -105,23 +111,27 @@ This is setup is achieved through the following transaction construction.
 
 **Set 1: Happy Path**
 
-Includes two pre-signed t(x).  The redemption script requires a pre-image to be supplied to redeem the script.  The opposing party to the contract holds this pre-image as such they can reveal this at any time allowing their counterparty to close out the bet successfully with bonds returned to each party.
+Includes two pre-signed t(x).  
 
-    ***Note:*** A fee which will be paid to the Oracle could optinally also be included even if     the contract is closed on the happy path in order to ensure that the enforcement     service is paid.
+The redemption script requires a pre-image to be supplied to redeem the script.  Each party generates and holds the pre-image which pays out the fuinds to the opposing party.
+
+As such at any time they can reveal this at any time allowing their counterparty to close out the bet successfully with bonds returned to each party.
+
+> ***Note:*** A fee which will be paid to the Oracle could optinally also be included even if the contract is closed on the happy path in order to ensure that the enforcement service is paid.
 
 **Set 2: Enforcement Path**
 
-This will again include two pre-signed t(x). These will mimic set 1, with the bond in this case from the forfeiter paying the Oracle.  Each of these transactions is also timelocked to 'n' blocks after the contract expiration meaning the two parties will always have the opportunity to redeem the contract prior to this.
+This will again include two pre-signed t(x) mimicing set 1.  In this case the bond amount is paid out to the enforcement surface provider.  
 
-In order to redeem against these the Oracle will have to provide the hash of a contract script / plus data points and < CONSTRUCT A HASH OF HASHES TO PROVE SCRIPT >.
+Each of these transactions is also timelocked to 'n' blocks after the contract expiration meaning the two parties will always have the opportunity to redeem the contract prior to this.
 
-As may become clear all of the trade offs in this sense hinge on how we can provide this final signature, which we'll cover in the next session.
+In order to redeem against these the Service Provider will have to provide evidence of an outcome and the hash of a contract script.  Basicallly they reveal a secret which can be verified by the parties involved in the bet.
 
 **Set 3: Fallback**
 
-This allows a final action to be specified in final transaction set. For example the funds could default to be returned to original owners if no action is taken or even burnt ot better yet donated to a community project (like Tor or BTCPay Server).
+This allows a final action to be specified "in case of emergency beak glass".  For example the funds could default to be returned to original owners if no action is taken or even burnt ot better yet donated to a community project (like Tor or BTCPay Server).
 
-This just provides more impetous to both the parties and/or the Oracle to ensure the contract is settled in an appropriate amount fo time. 
+This also provides more impetous to both the parties and/or the Oracle to ensure the contract is settled in an appropriate amount of time. 
 
 
 
@@ -129,43 +139,45 @@ This just provides more impetous to both the parties and/or the Oracle to ensure
 
 --- 
 
-### Contract Enforcement
+### Who is this third party?
 
-##### But Pete - how does any of this actually happen?
+I'm going to expand on this in the article "Smart Contracts will be hired" but, this is based on the view that what we're actually doing in a smart contract environment is... 
 
-Glad you asked...
+> Paying a '3rd party' to ensure a set of deterministic steps are taken resulting in a payment, for a set of funds held for a finite time.
+> 
+> The 3rd party often just happens to be a computer.
 
-As we covered in the article "Smart Contracts will be hired" what we're actually doing in a smart contract environment is paying a '3rd party' to ensure a set of coded steps are taken, its just the 3rd party is a computer.
+As such the platform debate revolves around the nature of this 3rd party. 
 
-As such the platform debate revolves around what this 3rd party looks like. For instancein Etheruem 3rd Party means "all ethereum full nodes" - yep both of them ;) or in liquid you would be asking all ***xyz*** validators.
+For instance in Ethereum 3rd Party means "all ethereum full nodes" (yep both of them ;-) ) or in liquid you would be asking 30+ validators.
 
-Interestingly we start to see that this final signature does not need to be **"on the blockchain"** indeed it could be 1 person, a Shamir Secret Sharing scheme or has pre-image which is released from other coordinated action. 
+Interestingly, we start to see that this final signature does not need to be **"on the blockchain"** indeed it could be 1 person, a Shamir Secret Sharing scheme or simply a pre-image generated from another off chain coordinated action. 
 
 > **SPOILER ALERT**
 > 
-> This decoupling between the monetary system and the contract execution / enforement is going to be massively important in driving down the cost of contract execution in a competitive environment.
+> This decoupling between the monetary system and the contract execution is going to really help in driving down the cost of contract execution in a competitive environment.
 > 
 > **SPOILER ALERT**
 
-Just to reinforce this blunt quip the idea here is it would always be cheaper to hire that one person two parties both trust to sign a transaction, than to hire a world computer in order to enforce execution.
+Just to reinforce this blunt quip.  The idea is that it would always be cheaper to hire a single individual that two parties both trust to adjudicate a contract, than to hire a world computer to enforce execution.
 
-The correct price for contract execution will of course be best be decided on in a competitive market for contract execution in which agents assess the various leves of trust minimisation, counterparty risk and cost.
+The correct price for contract execution will, of course, be decided on in a competitive market in which free agents assess the various leves of trust minimisation, counterparty risk and cost.
 
-As such we'd expect a market of options to provide this service. 
+As such we could rationaly expect a market to develop in which onlnie institutes compete to "publicly sign facts" and adjudicate in which they stake their public reputation.
 
 ---
 
-### The Tech Stack
+### High Level Archiecture
 
 Ok so lets quickly recap on what we've got so far.
 
 * A transaction construction which incentivises two parties to conduct business directly and settle their contracts in a trueful manner.
 
-* A transaction construction which provides funding to **pay a service fee** for this enforcement.
+* A transaction construction which provides funding to **pay a service fee** for this enforcement to ensure it happens.
 
 * A concept that there will be multiple ***off chain services*** to enforce this contract execution.
 
-So there are now two obvious (and related) questions staring us in the face at this point:
+Two questions are staring us in the face at this point:
 
 1) What does this market look like.
 
@@ -175,7 +187,7 @@ In order to answer this we're going to dip into the Bitcoin Cake concept (sorry 
 
 ![Lockbox_2.png](Lockbox_2.png)
 
-So the layers and purposes we're looking for are as follows:
+The layers and purposes we're looking for are as follows:
 
 * **L0 Interconnect:**  Assumes both parties can communicate via a common IP network e.g. the internet.
 
@@ -255,7 +267,7 @@ We call this an orchestration market as the maner in which you provide this serv
 
 We could imagine from the above example that Dave (see below), might be able to out compete the world computer in terms of price and it seems like he'd be a natural choice to resolve a bet on a game of football, so lets look at how we'd accompllish this before we start to explore the potential trade offs (I know seems like there could be nothing that goes wrong here).
 
-![Dave wearing his new shorts](DaveShorts.png)
+![Dave wearing his new shorts](/Users/pwinn/WinnBox/Notes/HI/GIT/BitcoinForHumans/lockbox/DaveShorts.png)
 
 So in this instance we have the followig scenario.
 
@@ -407,11 +419,21 @@ As said however, I think in the same way there is now a arket for monies, we cou
 
 In order for this to work, there will need to be an interactive process to agree terms, ensure 
 
+
+
+**TODO:** need to draw out all of the transaction outputs and how each is verified by the contract participants.
+
+
+
 ---
+
+
 
 ## FAQs
 
 In reality these are my own objections that I'm raising along the way to make sure I steelman this after!
+
+
 
 **Q:** How do we validate the real world facts? 
 
