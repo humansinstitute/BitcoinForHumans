@@ -107,7 +107,7 @@ This closely mimics a real life "betting" arrangement in which a third party is 
 
 This is setup is achieved through the following transaction construction.
 
-![Lockbox_1.png](Lockbox_1.png)
+<img src="Lockbox_1.png">
 
 **Set 1: Happy Path**
 
