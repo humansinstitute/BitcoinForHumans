@@ -1,18 +1,18 @@
 # Lockbox Transaction Construction
 
-#### A framework for offchain reliably enforced, trust minimised smart contract enforcement in bitcoin.
+#### A framework for reliable, freemarket enforcement of deterministic contracts on bitcoin.
 
 ***Note*** This is provided as an unfinished high level concept seeking feedback! 
 
 ---
 
-#### The Tl;dr's Tl;dr
+## The Tl;dr's Tl;dr
 
 A lockbox creates a pre-approved set of transactions and fee payments which can reliably be enforced by off chain service providers.  This could facilitate a market for Oracle / Enforcement services without the requirement for tokens / altcoins.
 
 ---
 
-#### The Tl;dr.
+## The Tl;dr.
 
 At a high level the concept works as follows:
 
@@ -38,7 +38,7 @@ I believe this approach which respects the decoupling **money** from **contracts
 
 ---
 
-### The Lockbox
+## The Lockbox
 
 The proposal is to have all parties in a contract pre-commit to a set of transactions which could be settled to the bitcoin blockchain.  
 
@@ -91,7 +91,7 @@ cond2(yes)->op4->e2
 cond2(no)->op5->op6->e3
 ```
 
-![Lockbox Flowchart](/Users/pwinn/WinnBox/Notes/HI/GIT/BitcoinForHumans/lockbox/Lockbox-Flow.png)
+<img src="Lockbox-Flow.png">
 
 A minimum of three parties are required in order to execute this contract:
 
@@ -133,13 +133,11 @@ This allows a final action to be specified "in case of emergency beak glass".  F
 
 This also provides more impetous to both the parties and/or the Oracle to ensure the contract is settled in an appropriate amount of time. 
 
-
-
 ***Note*** All transactions will need to be formatted in the manner of channel factory **"Replaceable allocations"** including kick off and invalidation transactions.  More information on [channel factory construction is availabe in the whitepaper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6124062/).
 
 --- 
 
-### Who is this third party?
+### Third Parties and Oracle Problems
 
 I'm going to expand on this in the article "Smart Contracts will be hired" but, this is based on the view that what we're actually doing in a smart contract environment is... 
 
@@ -147,23 +145,23 @@ I'm going to expand on this in the article "Smart Contracts will be hired" but, 
 > 
 > The 3rd party often just happens to be a computer.
 
-As such the platform debate revolves around the nature of this 3rd party. 
+As such the platform debate revolves around the nature of this 3rd party, with a recognition that the Oracle Problem will still exist in all cases. 
 
-For instance in Ethereum 3rd Party means "all ethereum full nodes" (yep both of them ;-) ) or in liquid you would be asking 30+ validators.
+This is largely resolved in the real world by utilising people, companies and institutions which stake their reputation on enforcing contracts.  
 
-Interestingly, we start to see that this final signature does not need to be **"on the blockchain"** indeed it could be 1 person, a Shamir Secret Sharing scheme or simply a pre-image generated from another off chain coordinated action. 
+The same concept can be applied with Bitcoin in which we have a range of options from a simple arbitration contract in which a third party holds a key and has arbitration responsiblities in case of a disagreement (e.g. Hodl Hodl predictions).
 
-> **SPOILER ALERT**
-> 
-> This decoupling between the monetary system and the contract execution is going to really help in driving down the cost of contract execution in a competitive environment.
-> 
-> **SPOILER ALERT**
+Likewise these solutions will cover the entire complexity scale from single people, to groups, to companies, to federations and standalone open public blockchains.
 
-Just to reinforce this blunt quip.  The idea is that it would always be cheaper to hire a single individual that two parties both trust to adjudicate a contract, than to hire a world computer to enforce execution.
+The purpose of the lockbox construct is not to solve this Oracle problem, but instead to provide a means for any of these possible solutions to interact with the bitcoin contract.
 
-The correct price for contract execution will, of course, be decided on in a competitive market in which free agents assess the various leves of trust minimisation, counterparty risk and cost.
+As such we could rationaly expect a market to develop in which many online institutes compete to "publicly sign facts" and provide "enforcement services" in which they stake their public reputation in return for fees.  Assuming that smart contracts are deemed valueable on the free market. 
 
-As such we could rationaly expect a market to develop in which onlnie institutes compete to "publicly sign facts" and adjudicate in which they stake their public reputation.
+The correct solution for automated contract enforcement would therefore, be decided on in a competitive market in which free agents assess the various leves of trust minimisation, counterparty risk and cost.
+
+This decoupling of monetary system and the contact will allow the price of contract execution to be discovered outside of the cost of securing the money.
+
+For instance we would expect that it would always be cheaper to hire a single individual, that two parties trust to adjudicate a contract, than it would be to hire a world computer to enforce contract execution.
 
 ---
 
@@ -177,35 +175,33 @@ Ok so lets quickly recap on what we've got so far.
 
 * A concept that there will be multiple ***off chain services*** to enforce this contract execution.
 
-Two questions are staring us in the face at this point:
+To provide some further contact we'll llook at architectually, how this fits into the bitcoin technical ecoystem. 
 
-1) What does this market look like.
+We'll borrow the HL layered view of bitcoin (discussed fiurther in Bitcoin Cake -sorry carnivores).
 
-2) How does is interact with the lockbox.
+<img src="arch1.png">
 
-In order to answer this we're going to dip into the Bitcoin Cake concept (sorry carnivores) as highlighted in the diagram below.
+The purpose of each layer is as follows:
 
-![Lockbox_2.png](Lockbox_2.png)
+* **L0 Interconnect / Comms:**  A common IP network is required to ensure the parties can adequetly conntect, transfer information and access bitcoin and lightning networks.
 
-The layers and purposes we're looking for are as follows:
+* **L1 Money Production:**  The security, verification, issuance and ownership of the money used in contracts will be provisioned and enforced by the bitcoin network as multisig UTXOs.
 
-* **L0 Interconnect:**  Assumes both parties can communicate via a common IP network e.g. the internet.
+* **L2 Transport/Settlement:**  The instant settlement of funds is achieved thorugh lightning network channels anchored to the bitcoin UTXOs in a channel factory construction.
 
-* **L1 Money Production:**  The security, verification, issuance and ownership of the money will be provisioned by the bitcoin network, utilising multisig utxos utilising channel factories.
+* **L3 Orchestration:**  Is the concept of having systems to reliably enforce an outcome based on a set of deterministic rules.  This is achieved in a seperate layer which sits above the lightning network through the lockbox construction.  Lockbox provides an incentive for settlement and provides a "tx-hook" for a third party signing service to ensure execution.
 
-* **L2 Transport/Settlement:**  The instant settlement of funds is achieved thorugh lightning network channels as part of the channel factory construction.
+* **L<u>n</u> UI:**  The top layer is of course the UI layer in which we need to coordinate the signing ceromonies and verification checks on the the bitcon and lightning network to establish a lockbox.  Effectively a bitcon/lightning wallet (wallet is so the wrong word...) which supports lockbox construction. 
 
-* **L3 Enforcement:**  Is achieved by pre-signing the lockbox transaction contruction with an incentive for settlement and opportunities to hook in a third party signing service to ensure execution.
+#### Transaction Hooks
 
-* **L4 Orchestration & UI:**  Is achieved in the user interface layer, by ensuring that all parties follow a clear signing protocol in order to setup the lockbox, agreeing on the enforcement criteria and putting the relevant "tx-hooks" in place.  This will be achieved by running a common application stack which both respects these protocols and sits on top of the Bitcoin and Lightning node stack.
+> Hey Pete you can't just say tx-hook and leave it at that, this seems like it might be important!
 
-The wise reader will at this point have realised that we just introduced one new concept - sorry about that!
-
-So what the hell is a tx-hook? 
+Sorry!
 
 > tx-hook = transaction hook.
 
-Simply put, the lockbox provides an "enforcement transaction set" which is essentially a hook which allows an off chain service provider to ensure enforcement of this contract.  
+Simply put, this is the "enforcement transaction set" which allows the third party to enforce the contract at their descretion and the piece of information which needs to be provided in order to include this transaction successfully in a bitcoin block.
 
 This can be achieved under current bitcoin consensus rules by:
 
@@ -215,63 +211,58 @@ This can be achieved under current bitcoin consensus rules by:
 
 * after a specific block height.
 
-So the real trick here is in the orchestration layer.  In this layer we will seek to use clever tricks to generate, secure and use pre-images and signatures in off chain services/protocolls in order to enforce on chain payments.
+So the real trick for orchestration layer is to consider what clever tricks we have to generate, secure and use pre-images and signatures in off chain services/protocolls to enforce pre-commitments in on chain payments.
 
-As such we're now going to drill into the tx-hooks and orchestration layer, before we come back to what some example services might emerge on the market to meet this need.
+Here we borrow from the work done in channel factory development for lightning.
 
-### Transaction Hooks
+Here's we're going to assume that the transaction hook is a hashed pre-image generated interactively by the opposing contract "partner" and the Enforcement Service Provider.
 
-Its all about keys and secrets baby.
+This will be a valid transaction output ready for broadcast only during the contract  enforcement period.
 
-I feel there's a point in every bitcoiners journey  where you think...
+A psudo-code pre-signed transaction output signed in the enforcement path will have the following style of redemption script. 
 
-> Should I start just randomly guessing private keys? 
-> 
-> These things are just numbers what if I guessed the right one and there was a 1000 BTC in there.
-
-This is forgivable as infinity and massive numbers really aren't intuitve in any way to numbers.  It really hit home to me when someone mentioned there were less atoms in the observable universe that the number of combintations in a private key. 
-
-This same is true for pre-images. We're basically locking up money in a way that can only be spent if you happen to know a secret where the chances of guessing the secret are functionally infinite.
-
-This is interesting as we now have a piece of random data, which can't be guessed, but when presented in the correct window of time will allow contract enforcement.
-
-This is how we're going to implement our transaction hook in our little thought experiment.
-
-Simply put the pre-signed transaction outputs signed in the enforcement path will have the following style of redemption script.
+In this instance each party would sign a version of this transaction which concludes the contract in favour of their counterpraty.
 
 ```
 Redeem if 
     - blocktime > n
-    - hash(pre-image) == "hash provided at setup"
-    - < other logic spending utxos to correct participant >
-    - < other logic claiming bond to pre agreed Oracle address >
+    - hash(pre-image) == 23hju34nonsense8createdjkj..duringcontract8setup
+Output
+    - Pay out to counterparty
+    - Pay out bond to pre-selected Oracle address
 ```
 
-So any person, or persons who can provide that pre-image can simply enforce the contract, however, you would only really expect the Oracle to do this as the bond will only ever be sent to them.
+***Note:*** Creation of this pre-image hash does not need to be **"on the blockchain"** indeed it could be 1 person, a Shamir Secret Sharing scheme or simply a pre-image generated from another off chain coordinated action.
 
 ### Orchestration Markets and Facts
 
-An orchestration market is simply a decentralised marketplace of providers for a very simple service.
+An orchestration market is a marketplace of providers for the service of orchestrating bitcoin contract enforcement, simply described the service provider wil do the following:
 
-> At a pre-agreed time, I will publically commit to a fact and generate a pre-image that will allow me to claim a bond in a contract.
+> At a pre-agreed time, I will fact check some data and publically commit to this fact.  
+> 
+> I will also use this data to generate a pre-image that will allow me to claim a bond in a contract paid in bitcoin in rerturn for this service.
 
-We call this an orchestration market as the maner in which you provide this service could be accomplished in a multiutude of different ways.  For example:
+This is termed an orchestration market as the maner in which this service could be provided could be accomplished in a multiutude of different ways.  
 
-- I am Dave and on my website I will list the following facts about the results of football matches on my website. They will be signed and can be validated with this puiblic key.  **For a price** I'll even provide a hash image which validates this fact to you.
+For example:
 
-- < multiple options in between these like side chains, groups of people >
+- **Simple:** I am Dave and on my website I will list the following facts about the results of football matches. They will be signed and can be validated with this puiblic key.  **For a price** I'll even provide a hash image and generate a new bitcoin transaction on lightning for you.
 
-- I am a decentralised world computer running on millions of nodes around the world. **For a price** I will assess any contract you can write and install on me. I will run this contract on every node in my network millions of time with zero downtime. 
+- **Complex:** I am a decentralised world computer running on millions of nodes around the world.  I also host prediction markets where people can bet on real world outcomes in order to establish facts within a reasonable confidence and manage arbitration of this for you.  This even works or football games!  **For a price** I will assess any contract you can write and install on me. I will run this contract on every node in my network with zero downtime and pay out a transaction for you. 
 
-#### Taking an Example: How does Dave perform this task
+- **Somewhere inbetween:** We are a network of signers around the world. We follow all follow football matches and have been signing results on this open network for years now, using this public key. **For a price** we'll even agree to broadcast a particular transaction in line with these results and commit to this in a transparent manner.
 
-We could imagine from the above example that Dave (see below), might be able to out compete the world computer in terms of price and it seems like he'd be a natural choice to resolve a bet on a game of football, so lets look at how we'd accompllish this before we start to explore the potential trade offs (I know seems like there could be nothing that goes wrong here).
+#### Dave - a worked example with some flaws.
 
-![Dave wearing his new shorts](/Users/pwinn/WinnBox/Notes/HI/GIT/BitcoinForHumans/lockbox/DaveShorts.png)
+We could imagine from the above example that Dave (see below), might be able to out compete the world computer in terms of price and could be a natural choice to resolve a bet on a game of football, particularly if he's known to the betters.
 
-So in this instance we have the followig scenario.
+So lets look at how we'd accompllish this before we start to explore the potential trade offs (I know seems like there could be nothing that goes wrong here).
 
-- Alice bets 1 btc team A wins and is willing to pay up to 0.01 BTC to resolve the bet. 
+<img src="DaveShorts.png" width=400>
+
+So in this instance we have the following scenario.
+
+- Alice bets 1 btc team A wins and is willing to pay up to 0.01 BTC to place the bet. 
 
 - Bob bets team B wins and is willing to match Alice's terms.
 
@@ -306,11 +297,17 @@ WHERE
          hash(bettingscript(outcome)+ALICE-NONSENSE)
 ```
 
-The real crux here is that Dave can deterministicly generate two random nonsense numbers prior to the outcome of the contract, allowing us to pre-sign transactions against them which Dave can hold. 
+The crux  is that Dave can deterministicly generate two random hash pre-images prior to the outcome of the contract which allows us to pre-sign transactions which Dave can hold for enforcement.
 
-If Alice were able to generate the pay Alice transaction then she could quickly broadcast this prior to Dave in order to welch on the bet, so we protect this with a bit of extra ""nonsense" provided by the individual who would "lose the bet".
+However he can't actually use these before the pre-agreed enforcement time.
 
-Whilst we're at it, why don't we create this extra "nonsense" by signing the redemption script with our private key.  That way using the public key we can always prove at a later date that the opposing party did in fact agree to this.
+It is important that Alice isn't able to generate the pay Alice transaction i.e. ***transaction 1***  as she could quickly broadcast this prior to Dave in order to welch on the bet. 
+
+We protect this by adding noise to the pre-image which is provided by the individual who would "lose the bet" i.e. ***transaction 1*** is only valid if it includes information that only Bob could have provied.
+
+Instad of random noise, here we're going to create this "noise" by signing the redemption script inluded outcome, with Bobs private key.  
+
+That way using the public key we can always prove at a later date that the opposing party did in fact agree to this.
 
 This ensures that the opposing party couldn't guess the outcome hash and broadcast this themselves before Dave, i.e:
 
@@ -320,19 +317,17 @@ This ensures that the opposing party couldn't guess the outcome hash and broadca
 
 - Dave knows both pre-images, however he can only use them in specific and they only pay him an amount of the bond.
 
-So whilst we're at it, why don't we make that nonsense the output of the opposing party signing the redemption script with their private key.  That way using the public key we can always prove at a later data that the opposing party did in fact agree to this. 
-
 So we now have a situation in which DaveNet could provide a service in which he publishes facts on the internet and stores small transacitons, which allows Bob and Alice to make a trust-minimised peer-to-peer bet.
 
-In this instance this could be all we need.  It's cheap simple and accomplishes a goal in a trust minimised way (here I'm defining this as the funds in the contract are never actually controlled or can be stolen by Dave).
+In this instance this could be all we need.  It's cheap simple and accomplishes a goal in a trust minimised way.  
 
-However, we could imagine a higher stakes or more private contract where this might not seem like a good enough solution. So lets have a look at the trade offs.
+In this instance this is minimised as the funds in the contract are never actually controlled or can be stolen by Dave, he could however broadcast the incorrect result, which brings us nicely to the trade offs.
 
 ##### Are there really any trade offs to DaveNet?
 
 Of course, despite the respectable shorts there's a few questions that could be raised here:
 
-- **Privacy:** Do we want Dave to know so much about our betting habits and is he just a honeypot?
+- **Privacy:** Do we want Dave to know so much about our betting habits and would he become a privacy honeypot?
 
 - **Censorship Resistance:** Could Dave be corrupted by the government or bribed by the counterparty to broadcast the incorrect transaction?
 
@@ -343,11 +338,9 @@ Of course, despite the respectable shorts there's a few questions that could be 
 - **Speed:** How quickly can Dave resolve this contract? 
 
 - **Cost:** Is there a cheaper way of achieving this? 
-  (maybe but do you really want to trust Dave's cheaper, knock off cousin Lloyd?)
+  (maybe but do you really want to trust Dave's cheaper, knock off cousin Lloyd ni charge!?)
 
-There are of course potential ways to solve some of these issues, by optimising for different trade offs e.g. increasing privacy and redundancy.  
-
-These are trade offs for a reason, however, and optimising for one or many will of course mean taking a hit elsewhere.  
+There are of course potential ways to solve some of these issues, by optimising for different trade offs e.g. increasing privacy and redundancy.  These are trade offs though so optimising for one or many will of course mean taking a hit elsewhere.  
 
 If nothing else it will become expensive (which some transactions may still justify) to  improve in each of these areas.
 
@@ -357,15 +350,29 @@ This is chiefly why we believe a market for Orchestration services will develop 
 
 ## Enforcement Services Approaches
 
-Of course its cheap grist for the mill, for me to sit here and suggest that we can of corse just trust Dave and his fine shorts to do the right thing.  So we need to explore at a high level how some of these options might look.
+As discussed lockbox doesn't seek to solve the Oracle Problem here, but just to provide a hook for different services to plug into. 
 
-That said "a market is not made by one man" so this will of course not be exhausitve!
+At a high level some examples we might expect to emerge are:
 
-So at a high level I'm going to suggest some options and call out the pros and cons. 
+- Individuals
+
+- Community Groups
+
+- Government Oragnisations
+
+- Businesses
+
+- Federations Signing Networks
+
+- Public blockchians.
+
+- All of the above with different privacy fundamentals...
+
+In order to provide an example of how this might work I'll expand on the Federated Signing Network as I believe that this is a good trade off (but what do I know this is what markets are for).
 
 #### Federated Signing Networks
 
-A federated signing network is effectively a side chain like liquid, however, without the requirement for a token or peg in/out mechanism as bitcoin never moves to this chain.  Kind of like a blockchain but with no economic value. 
+A federated signing network is effectively a side chain like liquid, however, without the requirement for a token or peg in/out mechanism is bitcoin never required to move to this chain.  
 
 The purpose of this side chain would be to produce blocks that record facts, execute contract code and generate outputs which will correspond to the relevant pre-image required as our transaction hooks.  
 
@@ -395,39 +402,25 @@ All outputs are signed and verified on this chain (by the other signers) and the
 
 #### Zero Knowledge Proof / Confidential Transactions
 
-< HOLD > This area is a little beyond my current levels of research knowledge. However the idea here would be that instead of publically recording the outputs of any particular bet for verification purposes. i.e. having the redeem script executed in the signing chain or on DaveNet, we could instead provide range proofs which show the output of the bet with a view that this was correctly interperetted. 
+< WIP - need to work on how ZK Proof / CT could be used to improve privacy > 
+
+Publically recording the outputs of any particular bet and the contract script for verification purposes. i.e. having the redeem script executed in the signing chain or on DaveNet is likely not really a private system.
+
+Could instead provide range proofs which show the output of the bet with a view that this was correctly interperetted. 
 
 The people involved in the bet, would have an abilty to "decode" this proof and vouch for the result. 
-
-??? Hmmm not sure on this, WIP.
-
-#### Economic Smart Contracts Platform with DAO
-
-This for example would be an altcoin chain like ETC ;-).
-
-The idea would be that given we already have general purpose chains which allow smart contract excution. We could take advantge of existing smart contracts and prediction market platforms to act as Oracles. 
-
-It is my view that this will allows be a more expensive version of the signing chain construction without material improvements on the censorship resistance (SC back doors? ).  
-
-As such I wasn't going to expand here, however, it wold be remiss not to acknowledge that smart contract chains could be used to orchestrate contracts denominated in BTC.   
-
-As said however, I think in the same way there is now a arket for monies, we could expect a market for contract enforcement so this will play out accordingly.
 
 ---
 
 ## Creating a Lockbox (UI / UX Orchestration)
 
-In order for this to work, there will need to be an interactive process to agree terms, ensure 
+In order for this to work, there will need to be an interactive process to agree terms.
 
+< **TODO:** need to draw out the transaction outputs and how each is verified by the contract participants prior to agreeing the bet >
 
-
-**TODO:** need to draw out all of the transaction outputs and how each is verified by the contract participants.
-
-
+< **TODO:** Build out interacticve prototype which demonstrates flow >
 
 ---
-
-
 
 ## FAQs
 
@@ -435,9 +428,17 @@ In reality these are my own objections that I'm raising along the way to make su
 
 
 
+**Q:** So we still have an Oracle Problem then? 
+
+Yep. pont here is to solve this with a free market of service providers, as is already hapening ala Hodl hodl - prediction market.
+
+
+
 **Q:** How do we validate the real world facts? 
 
-Needs to be part of the lockbox setup to ensure that the signer has specific Oracle capabilities and these are shown. The inabilty of 1 network to cover and observe many "real world facts" is one reason why we believe there will be a market of different providers in this area.
+**A:** Needs to be part of the lockbox setup to ensure that the signer has specific Oracle capabilities and these are shown. The inabilty of 1 network to cover and observe many "real world facts" is one reason why we believe there will be a market of different providers in this area.
+
+
 
 **Q:** Could signing chain censorship resistance be improved by the adotion of state chains??
 
@@ -455,14 +456,14 @@ Needs to be part of the lockbox setup to ensure that the signer has specific Ora
 
 **Q:** What about outsized circumstances e.g. in the football bet the game never happens - whats the mutual escape hatch? 
 
-At any point in time the "lockbox" merely represents a set of pre-signed transaction in a channel balance which is a 2 of 2 multisig. As such the two parties could always collude prior to the contract enforcement period in order to broadcast an alternate UTXO and invalidate the transaction (this needs somet thinking about).
+**A:** At any point in time the "lockbox" merely represents a set of pre-signed transaction in a channel balance which is a 2 of 2 multisig. As such the two parties could always collude prior to the contract enforcement period in order to broadcast an alternate UTXO and invalidate the transaction (this needs somet thinking about).
 
-**Q.** How do we make sure that the ransactiopn which are broadcast match the attetations on bobs website..
+
+
+**Q:** How do we make sure that the ransactiopn which are broadcast match the attetations on bobs website..
 
 **Q:** Enforcement services could provide templated SC's and fees to make this much quicker to setup and pre-agree.
 
-## Attacks
-
-Could I DDOS someone expecting a contract to close in order to force this to the Oracle? 
 
 
+**Q:** Could I DDOS someone expecting a contract to close in order to force this to the Oracle? 
