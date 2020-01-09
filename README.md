@@ -8,7 +8,7 @@ This is all a work in progress and the idea is to begin building out a bit of an
 
 ### Concepts
 
-* [Lockbox](lockbox/Lockbox.md): An offchain construction for BTC "smart" contract enforcements.
+* [Lockbox](lockbox/Lockbox.md): A framework for reliable, freemarket enforcement of deterministic contracts on bitcoin.
 * [Layers and Emergent Properties](bitcoincake.md)
 
 ### Articles
