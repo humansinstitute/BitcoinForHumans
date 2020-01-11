@@ -426,6 +426,8 @@ In order for this to work, there will need to be an interactive process to agree
 
 In reality these are my own objections that I'm raising along the way to make sure I steelman this after!
 
+**Q:** So a main limitation at the moment would be that the outputs of the UTXO need to be known?
+Yep this seems to be correct at the moment, I guess you could stagger payments and stream them ala lightning e.g. outcome is not binary but x out of y. as such you could have the oracle stream upto x payments to a and y-x to b.
 
 
 **Q:** So we still have an Oracle Problem then? 
