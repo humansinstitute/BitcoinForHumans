@@ -61,4 +61,5 @@ Would need careful and standard spec for a good secondary market.
 Would need the ability to close at any point in time at the current price and settle back to sats. Perhaps these would be better as permentaly rolling 1 hour contracts…. 
 Alternately the ability to swap out Alice for Charlie at the agreement of Alice and Bob. 
 
-
+### The Clearnance Markets
+Doesn't seem to me that this would only require a single market / match maker many markets may infact be prefereable or a peer to peer order book similar to bisq / joinmarket.
