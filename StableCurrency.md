@@ -17,13 +17,15 @@ This person now has an effective CYM balance which will settle in bitcoin in 1 m
 
 At any time, this person could agree with their counterpart to “roll” this contract forward (this is a 2-of-2 multis so can be collaboratively closed and reopened) or failing that the contract settles and they can simple open up another contract to maintain their CYM balance, indeed the wallet could be instructed to do this automatically.
 
+Ideally this contract would also have a "closeing term" which setles the contract at that time with a small fee paid to the "maker".
+
 Let’s wave our magic wand and assume we fund and settle these contracts on lightning.
 
 ### Secondary CYM Market
 
 The idea here is that if we can establish DLC contracts that are routable between different users then we can now “sell our CYM” into a secondary market for SATS! 
 
-So for instance lets say I agreed a 1 month contract for bitcoin against CYM - which at any point in time is worth approximately the amount of sats currently referenced by the price feed. 
+So for instance lets say I agreed a 1 month contract for bitcoin against CYM - which at any point in time is worth approximately XYZ amount of sats currently referenced by the price feed. 
 
 If we assume that right now we have a contract worth 100,000 sats we might expect to be able to trade out of that contract for up to 100,000 Sats if there is an active market of new users wanting CYM. 
 
@@ -43,14 +45,25 @@ Example:
 If each CYM were an individual “token” Alice would simply give Bob five CYM and we get the outcome. But there are other ways to achieve this outcome. 
 
 Specifically the “MAGIC HAPPENS” could be one of a few different flows, which all arrive at the same conclusion if we assume our Secondary CYM market is indeed liquid:
-	1. Alice takes her 10 CYM contract to the secondary market and sells the 10 CYM contract and establishes 2x 5 CYM contracts. She then “sells” a 5 CYM contract to Bob.
-	2. Or if Bob actually wants to sell in CYM but receive in Sats.. Alice Sells her 10 CYM contract for 5 CYM and XYZ Sats. Alice routes sats to Bob over lightning. 
-	3. As 2, but after Alice routes the sats Bob then Bob Mints a new 1 month CYM contract. 
+
+**Option 1** 
+	* Bob is present and identifiable in the secondary market
+	* Alice takes her 10 CYM contract to the secondary market and sells the 10 CYM contract
+	* Alice establishes tract aga 5 CYM long contract. 
+	* Alice establishes a 5 CYM short contract to Bob.
+
+**Option 2**
+	* If Bob actually wants to sell in CYM but receive in Sats.. 
+	* Alice Sells her 10 CYM contract for 5 CYM and XYZ Sats. 
+	* Alice routes sats to Bob over lightning sett;ling the sale.
+
+**Option 3**
+	* As 2, but Bob wants CYM so add thee step
+	* Bob then Bob Mints a new 1 month CYM contract with sats recieved from Alice for 5 CYM. 
 
 Ideally I’d expect you’d want to escrow each of these transactions and tie them to the revolution of a specific point lock / secret which then allows for settlement across each contract in lock step in the same way the HTLC contract works for escrow.
  
  
-
 ---
 
 ### Price Feed Specs
@@ -63,3 +76,4 @@ Alternately the ability to swap out Alice for Charlie at the agreement of Alice 
 
 ### The Clearnance Markets
 Doesn't seem to me that this would only require a single market / match maker many markets may infact be prefereable or a peer to peer order book similar to bisq / joinmarket.
+Current thinking is wondering if something like NOstr with lighteight easily hosted relays could solve htis problem whiulst also allowing for public key based reputation to be bootstrapped?
