@@ -1,4 +1,4 @@
-# The CYM - A community based bitcoin collateralised stable coin
+# The CYM - A community based bitcoin collateralised StableBond (like a stablecoin but not)
 
 An alternative idea for creation of stable coins, which instead of utilising a “bearer token” is bitcoin based and utilises markets to manage pegs against a price feed.  
 
