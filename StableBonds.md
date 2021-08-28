@@ -6,7 +6,11 @@ An alternative idea for creation of stable coins.  The core concept is that inst
 
 The mental model I choose to think about this is to consider stable bonds as a bitcon collateralised bond market.  
 
-Whats more we believe we can create this in a trust minimised peer to peer architectire.   
+The goal is to do this in a trust minimised peer to peer architecture.
+
+This would allow any individual to elect to store a percentage of their bitcoin wealth in a "stable" form (defined as approximately pegged to the market exchange price of BTC/USD), with an eventual goal of reducing the volatility risk inherent in the earning and storing BTC when living in a hand to mouth fashion.
+
+I believe this would allow easier adoption of bitcoin, where it is most needed, if inidividuals could earn "USD on native bitcoin rails" and then engage in native swaps to bitcoin.
 
 *(This is very much a draft and there are a lot of edge cases to talk through I think, but the basic concepts and I would welcome discussion - Pete)*
 
