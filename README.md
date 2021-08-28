@@ -10,7 +10,7 @@ This is all a work in progress and the idea is to begin building out a bit of an
 
 * [Lockbox](lockbox/Lockbox.md): A framework for reliable, freemarket enforcement of deterministic contracts on bitcoin.
 * [Layers and Emergent Properties](bitcoincake.md)
-* [StableBonds](StableBonds.md)
+* [StableBonds](StableBonds.md): An approach to community based bitcoin backed stable currencies (like a stablecoin but not)
 
 ### Articles
 
