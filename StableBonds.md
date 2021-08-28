@@ -16,7 +16,7 @@ Whats more we believe we can create this in a trust minimised peer to peer archi
 
 ## Possible Implementation Pattern
 
-[[stablebond-implementation.md]] 
+[Implementation Patterns](stablebond-implementation.md) 
  
 ---
 
