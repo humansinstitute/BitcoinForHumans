@@ -1,4 +1,8 @@
-## Minting CYM
+# Example Implementation for Stablebonds
+
+Stablebonds referred to as bUSD represent a fixed amount of USD exposure, created as a synthetic instrument betweeb two peers in a discrete log contract. This is achievable now, however, there are several design considerations when looking to scale this to more people and create a tradable (i.e. for products and services) cureency.
+
+## Creation of Stable Bonds
 Imagine instead of issuing bearer tokens representing CYM  ( / GBP ) denominated balances we instead enter into a form of short term bond contract which is denominated in CYM and collateralised by BTC. 
 
 In this instance anyone can “mint CYM” by entering a DLC contract in a peer to peer contract which goes short bitcoin against CYM over a 1 month  period (or perhaps xyz blocks).
