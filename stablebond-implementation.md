@@ -1,16 +1,22 @@
 # Example Implementation for Stablebonds
 
-Stablebonds referred to as bUSD represent a fixed amount of USD exposure, created as a synthetic instrument betweeb two peers in a discrete log contract. This is achievable now, however, there are several design considerations when looking to scale this to more people and create a tradable (i.e. for products and services) cureency.
+Stablebonds referred to as bUSD represent a fixed amount of USD exposure, created as a synthetic instrument betweeb two peers in a discrete log contract. This is achievable now, however, there are several design considerations when looking to scale this to more people and create a tradable (i.e. for products and services) curency.
 
 ## Creation of Stable Bonds
-Imagine instead of issuing bearer tokens representing CYM  ( / GBP ) denominated balances we instead enter into a form of short term bond contract which is denominated in CYM and collateralised by BTC. 
+Instead of the traditional approach of issuing bearer tokens representing bUSD we instead enter into a short term bond contract which is denominated in USD and collateralised on both sides by BTC. 
 
-In this instance anyone can “mint CYM” by entering a DLC contract in a peer to peer contract which goes short bitcoin against CYM over a 1 month  period (or perhaps xyz blocks).
+This allows any individual or organisation to “mint" bUSD by entering a DLC contract in a peer to peer contract which goes short bitcoin against USD over a 4320 block (1 month) or 144 block (1 day) period.
 
-This person now has an effective CYM balance which will settle in bitcoin in 1 months time this can be adequately managed and shown for ease of use in a digital wallet.  
+This person now has an stable balance which can be displayed in a wallet application for ease of use. At the end of the period this will settle back into bitcoin.  Should the user want retain a USD balance they would roll forward the bond. 
+
+This of course requires a liquid market for bUSD offers, or put another way this requires there to be a liquid market of people who want to go levered long bitcoin :).
+
+
+
+## 
 
 At any time, this person could agree with their counterpart to “roll” this contract forward (this is a 2-of-2 multis so can be collaboratively closed and reopened) or failing that the contract settles and they can simple open up another contract to maintain their CYM balance, indeed the wallet could be instructed to do this automatically.
-
+ 
 Ideally this contract would also have a "closeing term" which setles the contract at that time with a small fee paid to the "maker".
 
 Let’s wave our magic wand and assume we fund and settle these contracts on lightning.
