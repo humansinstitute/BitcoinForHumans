@@ -32,6 +32,13 @@ The client will require functionality to manage several scenarios.
 
 Stablebonds referred to as bUSD represent a fixed amount of USD exposure, created as a synthetic instrument betweeb two peers in a discrete log contract. This is achievable now, however, there are several design considerations when looking to scale this to more people and create a tradable (i.e. for products and services) curency.
 
+The purpose of this design is to facilitate a number of use cases such as: 
+
+* UC001: Sally has no bank account but would like to sell goods / services and receive $USD (or equivalent) to her phone. 
+* UC002: Sally would like to hold USD securly outside of a bank account. 
+* UC003: Sally would like to be able to create and hold bitcoin in a savings account under her control without a bank.
+* UC004: Larry would like to go even more long Bitcoin without a counterpary.    
+
 ## Creation of Stable Bonds
 Instead of the traditional approach of issuing bearer tokens representing bUSD we instead enter into a short term bond contract which is denominated in USD and collateralised on both sides by BTC. 
 
