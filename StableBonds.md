@@ -7,8 +7,8 @@ An alternative idea for creation of stable coins.  The core concept is that inst
 The mental model I choose to think about this is to consider stable bonds as a bitcon collateralised bond market.  
 
 The goal is to do this in a trust minimised peer to peer architecture.
-
-This would allow any individual to elect to store a percentage of their bitcoin wealth in a "stable" form (defined as approximately pegged to the market exchange price of BTC/USD), with an eventual goal of reducing the volatility risk inherent in the earning and storing BTC when living in a hand to mouth fashion.
+ 
+This would allow any individual or institution (for example a community bank which wanted to offer USD denominated accounts on bitcoin native rails - for example in Afirca is there was limited access to banking rails) to elect to store a percentage of their bitcoin wealth in a "stable" form (defined as approximately pegged to the market exchange price of BTC/USD).  This capability could then support multiple initiatives to reduce the volatility and risk inherent in the earning and storing BTC when living in a hand to mouth fashion.
 
 I believe this would allow easier adoption of bitcoin, where it is most needed, if inidividuals could earn "USD on native bitcoin rails" and then engage in native swaps to bitcoin.
 
@@ -111,6 +111,10 @@ Required to be baked into the contract and executed by the relevant wallet as a 
 
 ### Yield? 
 Should there be a yield baked into the bond contract? Presumably this would be optional between parties, e.g. there is catastrophic loss risk for long side but not short, therefore you might expect the long sidde to expect some form of yield compensation for providing liquidity. 
+
+### The Role of Community Banks
+
+### The Role of Market Makers
 
 ### Price Feed Specs
 More to come, my thinking here is to decentralise these across multiple exchanges or community groups. Might make more sense to fix the CYM to the USD as a more liquid market? 
