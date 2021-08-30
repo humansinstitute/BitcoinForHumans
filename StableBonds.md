@@ -106,6 +106,12 @@ Ideally I’d expect you’d want to escrow each of these transactions and tie t
 
 ## Open Questions
 
+### Volatility and Liquidations
+Required to be baked into the contract and executed by the relevant wallet as a 50% price drop during a bond period (certainly not unheard of in a month long period), could potentially liquidiate the position on the long side requiring a pay out to the short position and establishment of a new bond for the short if they wish to remain in USD.
+
+### Yield? 
+Should there be a yield baked into the bond contract? Presumably this would be optional between parties, e.g. there is catastrophic loss risk for long side but not short, therefore you might expect the long sidde to expect some form of yield compensation for providing liquidity. 
+
 ### Price Feed Specs
 More to come, my thinking here is to decentralise these across multiple exchanges or community groups. Might make more sense to fix the CYM to the USD as a more liquid market? 
 
