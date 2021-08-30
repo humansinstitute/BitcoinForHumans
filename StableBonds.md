@@ -2,15 +2,25 @@
 
 ## An approach to community based bitcoin backed stable currencies (like a stablecoin but not)
 
-An alternative idea for creation of stable coins.  The core concept is that instead of utilising a “bearer token” backed by collateral (in a bank or a smart contract) we utilises markets and long / short preference to manage stability.  
+An alternative idea for creation of stable coins.  
 
-The mental model I choose to think about this is to consider stable bonds as a bitcon collateralised bond market.  
+The core concept is that instead of utilising a “bearer token” backed by collateral (in a bank or a smart contract) we utilises markets and long / short preference to manage stability.  
 
-The goal is to do this in a trust minimised peer to peer architecture.
+In affect we create a market driven alternative model of the "auto-dollar-conversion" mechanism which has been proposed in El Salvador. 
+
+Were a deep liquid market to develop to offer this service on native bitocin rails, we could onboard people directly to bitcoin the network, without volatility inherent in bitcoin the asset. 
+
+I believe it is reasonable assertion in a trust minimised private market, which allows users to hold dollar denominated value without counter party risk. 
+
+We would have two main actors interfacing with the software application stack Sally Short, who wants to retain USD spending power and Larry Long who is seeking to leverage long bitcoin in a non-coustodial fashion. There is also a thid optional users Mikey Market Maker, who may decide to provide liquiidity both long and short in return for a yield paid by contract takers in the market. 
  
-This would allow any individual or institution (for example a community bank which wanted to offer USD denominated accounts on bitcoin native rails - for example in Afirca is there was limited access to banking rails) to elect to store a percentage of their bitcoin wealth in a "stable" form (defined as approximately pegged to the market exchange price of BTC/USD).  This capability could then support multiple initiatives to reduce the volatility and risk inherent in the earning and storing BTC when living in a hand to mouth fashion.
+This would allow any individual or institution (for example a community bank which wanted to offer USD denominated accounts on bitcoin native rails - e.g. offshore in Africa, South America) to elect to store a percentage of their bitcoin wealth in a "stable" form (defined as approximately pegged to the market exchange price of BTC/USD).  
 
-I believe this would allow easier adoption of bitcoin, where it is most needed, if inidividuals could earn "USD on native bitcoin rails" and then engage in native swaps to bitcoin.
+This capability could then support multiple initiatives to reduce the volatility and risk inherent in the earning and storing BTC when living in a hand to mouth fashion. I believe this in turn would allow easier adoption of bitcoin, where it is most needed, if inidividuals could earn "USD on native bitcoin rails" and then engage in native swaps to bitcoin, where they please, to facilitate long term savings.
+
+In order to facilitate transactions the users wallet would in real time sell bonds into the market and transact over lightning. If the merchant wanted to recieve this in lightning, no further action is necesary. If however, they prefer dollar value, they can simply purchase a bond on the market. 
+
+The name "stablebonds" was chosen as no coins were created and I was seeking some differentation. Althoguh I appreciate this isn't so mauch a bond in any true sense, however, this does act more in line with a peer to peer repo market which generates cash from collatoral. 
 
 *(This is very much a draft and there are a lot of edge cases to talk through I think, but the basic concepts and I would welcome discussion - Pete)*
 
@@ -20,13 +30,13 @@ I believe this would allow easier adoption of bitcoin, where it is most needed, 
 
 ![Overview diagram](https://raw.githubusercontent.com/humansinstitute/BitcoinForHumans/master/assets/stablebond-overview.jpg)
 
-The proposed stack would include a client which sits on top of a lightning network and bitcoin network node. 
+The proposed stack would include an application client which sits on top of a lightning network node and bitcoin network node. 
 
 The client will require functionality to manage several scenarios.
 
-* Order matching: How larry met sally. 
-* Reputation: Sally wants to take a market offer from Larry and is assessing his reputauion as a peer. gning and enforcement of DLC.
-* DLC Management: Negotiation, si
+* Automated discovery and order matching: how does Larry meet sally.   
+* Reputation: Sally wants to take a market offer from Larry and is assessing his reputauion as a peer. 
+* DLC Management: Negotiation, signing and enforcement of DLC.
 * Exposure calculations, 
 * Automated rolling of bond contracts. 
 
