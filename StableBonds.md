@@ -1,26 +1,24 @@
 # Stable Bonds
 
-## An approach to community based bitcoin backed stable currencies (like a stablecoin but not)
+## An approach to community based bitcoin backed stable currencies (like a stable coin but not)
 
-An alternative idea for creation of stable coins.  
+*This should be read as an exploration of an alternative approach for the creation of stable coins, or in this instance non-coin but stable value.  Please be aware this is a work in progress to flesh out and test an idea.*
 
-The core concept is that instead of utilising a “bearer token” backed by collateral (in a bank or a smart contract) we utilises markets and long / short preference to manage stability.  
+The core concept of Stable Bonds is that instead of utilizing a “bearer token” backed by collateral (in a bank or a smart contract) we utilizes markets and long / short preference to manage stability through peer to peer contracts.
 
-In affect we create a market driven alternative model of the "auto-dollar-conversion" mechanism which has been proposed in El Salvador. 
+In effect we create a market driven alternative model of the "auto-dollar-conversion" mechanism which has been proposed in El Salvador. 
 
-Were a deep liquid market to develop to offer this service on native bitocin rails, we could onboard people directly to bitcoin the network, without volatility inherent in bitcoin the asset. 
+Were a deep liquid market to develop to offer this service on native bitcoin rails, we could onboard people directly to bitcoin the network, without volatility inherent in bitcoin the asset. 
 
-I believe it is reasonable assertion in a trust minimised private market, which allows users to hold dollar denominated value without counter party risk. 
-
-We would have two main actors interfacing with the software application stack Sally Short, who wants to retain USD spending power and Larry Long who is seeking to leverage long bitcoin in a non-coustodial fashion. There is also a thid optional users Mikey Market Maker, who may decide to provide liquiidity both long and short in return for a yield paid by contract takers in the market. 
+I believe it is reasonable assertion in a trust minimized private market, which allows users to hold dollar denominated value without counter party risk. 
  
 This would allow any individual or institution (for example a community bank which wanted to offer USD denominated accounts on bitcoin native rails - e.g. offshore in Africa, South America) to elect to store a percentage of their bitcoin wealth in a "stable" form (defined as approximately pegged to the market exchange price of BTC/USD).  
 
-This capability could then support multiple initiatives to reduce the volatility and risk inherent in the earning and storing BTC when living in a hand to mouth fashion. I believe this in turn would allow easier adoption of bitcoin, where it is most needed, if inidividuals could earn "USD on native bitcoin rails" and then engage in native swaps to bitcoin, where they please, to facilitate long term savings.
+This capability could then support multiple initiatives to reduce the volatility and risk inherent in the earning and storing BTC when living in a hand to mouth fashion. I believe this in turn would allow easier adoption of bitcoin, where it is most needed, if individuals could earn "USD on native bitcoin rails" and then engage in native swaps to bitcoin, where they please, to facilitate long term savings.
 
 In order to facilitate transactions the users wallet would in real time sell bonds into the market and transact over lightning. If the merchant wanted to recieve this in lightning, no further action is necesary. If however, they prefer dollar value, they can simply purchase a bond on the market. 
 
-The name "stablebonds" was chosen as no coins were created and I was seeking some differentation. Althoguh I appreciate this isn't so mauch a bond in any true sense, however, this does act more in line with a peer to peer repo market which generates cash from collatoral. 
+The name "stablebonds" was chosen as no coins were created and I was seeking some differentiation. Although I appreciate this isn't so mauch a bond in any true sense, however, this does act more in line with a peer to peer repo market which generates cash from collateral. 
 
 *(This is very much a draft and there are a lot of edge cases to talk through I think, but the basic concepts and I would welcome discussion - Pete)*
 
@@ -30,17 +28,20 @@ The name "stablebonds" was chosen as no coins were created and I was seeking som
 
 ![Overview diagram](https://raw.githubusercontent.com/humansinstitute/BitcoinForHumans/master/assets/stablebond-overview.jpg)
 
-The proposed stack would include an application client which sits on top of a lightning network node and bitcoin network node. 
+The proposed stack would include sveral components. 
 
-The client will require functionality to manage several scenarios.
+* [[Stablebond-Wallet]]: This is an application sitting on top of and integrating with lightning and bitcoin nodes, ideally this could be added to existing wallets and application stacks (for example Sphinx.Chat) in order leverage existing identity, group and messaging infrastrcuture.
+* [[Stable Bond Contract Format]]: This describes a standard contracting protocoll for creating 1 day and 1 month bonds, specifiying the exit criteria and 
+* [[Stable Bond Exchange Market]]: This is a virtual market place which represents market makers willing to take the long or short side of individuals seekign stability of long exposure. It is likely that multiple markets may segregate and emerge based on supported functionality and localities (e.g. Wallets in Nigeria working without KYC or unbanked population versus US based regulated wallets with full KYC for merchants).
 
-* Automated discovery and order matching: how does Larry meet sally.   
-* Reputation: Sally wants to take a market offer from Larry and is assessing his reputauion as a peer. 
-* DLC Management: Negotiation, signing and enforcement of DLC.
-* Exposure calculations, 
-* Automated rolling of bond contracts. 
+Stablebonds referred to as bUSD represent a fixed amount of USD exposure, created as a synthetic instrument between two peers in a discrete log contract. This is achievable now, however, there are several design considerations when looking to scale this to more people and create a tradeable (i.e. for products and services) currency.
 
-Stablebonds referred to as bUSD represent a fixed amount of USD exposure, created as a synthetic instrument betweeb two peers in a discrete log contract. This is achievable now, however, there are several design considerations when looking to scale this to more people and create a tradable (i.e. for products and services) curency.
+We have three core Personas interfacing in the stable bond system:
+
+* **[[Sally Short]]:** Primarily Sally wants to retain USD spending power but would prefer (or has) to do this in a non-custodial way on bitcoin network rails.
+*  **Larry Long:** Larry has bitcoin and is seeking to take leveraged long exposure to the bitcoin price in a non-custodial fashion. 
+*  **Mikey Marky Maker:** Is an entrepreneur with a bitcoin balance of bitcoin and is seeking ways to put this to work in order to drive a yield. who will switch between the roles of Sally and Larry in order to provide liquidity both long and short in return for a yield paid by contract takers in the market. 
+*  **Nelly Nonbank:** Nelly isn't a bank, but she is interested in providing "bank like services" in her community. She can't open a central bank account, but believes bitcoin rails could allow her to do this without permission. 
 
 The purpose of this design is to facilitate a number of use cases such as: 
 
@@ -116,7 +117,7 @@ Ideally I’d expect you’d want to escrow each of these transactions and tie t
 
 ## Open Questions
 
-### Volatility and Liquidations
+### Volatility Risk and Liquidations
 Required to be baked into the contract and executed by the relevant wallet as a 50% price drop during a bond period (certainly not unheard of in a month long period), could potentially liquidiate the position on the long side requiring a pay out to the short position and establishment of a new bond for the short if they wish to remain in USD.
 
 ### Yield? 
