@@ -24,7 +24,7 @@ In order to facilitate transactions the users wallet would in real time settle t
 
 An example payment flow for a community bank and animated mp4 version. 
 
-The name "stablebonds" was chosen as no coins were created and I was seeking some differentiation. Although I appreciate this isn't so much a bond in any true sense, however, this does act more in line with a peer to peer repo-market which generates cash from collateral. 
+The name "stablebonds" was No tokens, all bitcoin collateralized channels. chosen as no coins were created and I was seeking some differentiation. Although I appreciate this isn't so much a bond in any true sense, however, this does act more in line with a peer to peer repo-market which generates cash from collateral. It's also a cheeky nod to the fact that nothing in bitcoin is really named properly (wallets, coins etc).
 
 *(This is very much a draft and there are a lot of edge cases to talk through I think, but the basic concepts and I would welcome discussion - Pete)*
 
