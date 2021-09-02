@@ -36,18 +36,21 @@ The name "stablebonds" was No tokens, all bitcoin collateralized channels. chose
 
 The proposed stack would require several logical components. 
 
-* [[Stablebond-Wallet]]: This is an application sitting on top of, and integrating with, lightning and bitcoin nodes, ideally this could be added to existing wallets and application stacks (for example Sphinx.Chat) in order leverage existing identity, group and messaging infrastructure required to facilitate contract discovery, negotiation, execution and settlement.
+* [[Stablebond-Wallet]]: This is the app layer which integrates with lightning and bitcoin nodes, handles communication in the market and negoatiates bUSD Swaps and manages payments and settlement of contracts. It would ideally be implemented as a library and included in existing applciation stacks, for example integration into Sphinx.Chat would allow the applicaiton to inherit existing groups, identity and reputation information.
 * [[Stable Bond Contract Format]]: This describes a standard contract and protocol for creating 1 day and 1 month bonds. Standardization of the contract, and potentially set amounts, would encourage routing of bond contracts as a means of creating liquid secondary markets and optionality for "coinage" e.g 1 / 5 / 10 dollar notes.  
 * [[Stable Bond Exchange Market]]: This is a virtual market place which matches market makers willing to take the long or short side of individuals seeking stability of long exposure. It is likely that multiple markets may segregate and emerge based on supported functionality and localities (e.g. Wallets in Nigeria working without KYC for un-banked population versus US based regulated wallets with full KYC for merchants).
 * [[BTCUSD Price Oracles]]: Any number of price Oracles could provide signed pricing messages in order to inform the DLC contract. 
+* Bitcoin / Lightnin Wallet: To facilitate the payment and receipt of payments over lightning. 
 
-Stablebonds referred to as bUSD represent a fixed amount of USD exposure, created as a synthetic instrument between two peers in a discrete log contract. This is technically feasible now and contracts have already been executed on bitcoins main chain which have settled a [stable dollar value bet with zero knowledge to the Oracle](https://suredbits.com/settlement-of-first-multi-oracle-dlc/). 
+Stablebonds (bUSD) represent a fixed amount of USD exposure.  These are created by each user as required as a synthetic instrument between two peers in a discrete log contract. This is technically feasible now and contracts have already been executed on bitcoins main chain which have settled a [stable dollar value bet with zero knowledge to the Oracle](https://suredbits.com/settlement-of-first-multi-oracle-dlc/). 
 
-This is achievable now, however, there are several design considerations when looking to scale this to more people and create a tradeable (i.e. for products and services) currency.
+Whilst this is achievable now, however, there are several design considerations when looking to scale this to more people and create a tradeable (i.e. for products and services) currency, which I will continue to expand on as this design develops.
+
+### Whos who
 
 We have three core Personas interfacing in the stable bond system:
 
-* **[[Sally Short]]:** Primarily Sally wants to retain USD spending power but would prefer (or has) to do this in a non-custodial way on bitcoin network rails.
+* **Sally Short:** Primarily Sally wants to retain USD spending power but would prefer (or has) to do this in a non-custodial way on bitcoin network rails.
 *  **Larry Long:** Larry has bitcoin and is seeking to take leveraged long exposure to the bitcoin price in a non-custodial fashion. 
 *  **Mikey Marky Maker:** Is an entrepreneur with a bitcoin balance of bitcoin and is seeking ways to put this to work in order to drive a yield. who will switch between the roles of Sally and Larry in order to provide liquidity both long and short in return for a yield paid by contract takers in the market. 
 *  **Nelly Nonbank:** Nelly isn't a bank, but she is interested in providing "bank like services" in her community. She can't open a central bank account, but believes bitcoin rails could allow her to do this without permission (and she's right - f!ck yeah). 
@@ -59,22 +62,42 @@ The purpose of this design is to facilitate a number of use cases such as:
 * UC003: Sally would like to be able to create and hold bitcoin in a savings account under her control without a bank.
 * UC004: Larry would like to go even more long Bitcoin without a counter party.    
 * UC005: (Auntie) Nelly would like to create USD denominated bank accounts for her family and friends as her local currency is collapsing and luckily she has some bitcoin. 
-* UC006: Mikey would like to make yield on his bitcoin by making a market in stable bonds in return for yield. 
+* UC006: Mikey would like to make yield on his bitcoin by making a market in stable bonds in return for yield.
+* UC007: Nelly's oportunistic cousin Welly, is interested in replicating Nellys services at a reduced fee (so she does because this is a free market).  
 
-Each of these use cases will be explored in more detail. 
+Each of these use cases will be explored in more detail as we go. For the most part the actions taken are commons across multiple personas, albeit the intentions and incentives differ, which will be interesting to explore. 
 
 ### Stable Bond Life Cycle
 
-#### Entering a stable bonds position
-Instead of the traditional approach of issuing bearer tokens representing bUSD we instead enter into a short term bond contract which is denominated in USD with BTC as the collateral on both sides to fund the contract. 
+#### Stable Bond Market
 
-This allows any individual or organization to “mint" bUSD by entering a DLC contract in a peer to peer contract which goes short bitcoin against USD over a 4320 block (1 month) or 144 block (1 day) period.
+The idea here is that if we can find peers that want to go long, then we can take the alternaitve side of the that trade. 
+
+The purpose of the market is to provide a place for these two parties to meet. In our example above we reference both a "community bank" and "many providers". The point here is that ther can be many actors in this market as it is natively trustless in concept. The concept of a bank with many customers, simplifies this concept in implementation for the early phases (this "Bank" could however be as simple as a single person with the required liquidity running the banking functions).  
+
+In a simple form you could imagine this as a simple "group chat app" which lets you post maker offers for new bonds terms - here standardization of the contract terms makes the negotiation simpler and the market more liquid. It would also be reasonable to expect this to diverge into multiple local markets based around local banking services nad lightning providers. 
+
+Given the risk of draw down, it is suggested that these terms should be short and the parties should roll the contracts frequently. For example go short bitcoin for 144 blocks (1 day) paying a yield to maker of XY basis point to incentivise market makers to take the other side of the trade. 
+
+Differnet trust models and from centralized actors to peer to peer could be utilised in the market.
+
+What this really allows is for people to enter and leave bUSD contracts at will, assuming there is a liquid BTC/bUSD market.
+
+The liquidity of the market will be driven by to desires (1) to hold stable dolar value outside the banking system and (2) the desire toe go leveraged long bitcoin in a trust minised non custodial fashion. 
+
+History tells us we're probably on safe ground. 
+
+#### Entering a stable bonds position
+
+Instead of the traditional approach of issuing bearer tokens representing bUSD we instead enter into a short term 'bond' contract at the user level which is denominated in USD with BTC as the collateral on both sides to fund the contract. 
+
+This allows any individual or organization to “mint" there own bUSD as required by entering a DLC contract in a peer to peer contract which goes short bitcoin against USD over a 4320 block (1 month) or 144 block (1 day) period.
+
+Once established at any point in time this contract is worth a variable amount of sats, representing the dollar value referenced by the price feed. 
 
 This person now has an stable balance which can be displayed in a wallet application for ease of use. At the end of the period this will settle back into bitcoin.  Should the user want retain a USD balance they would roll forward the bond. 
 
-This of course requires a liquid market for bUSD offers, or put another way this requires there to be a liquid market of people who want to go levered long bitcoin :).
-
-#### Exiting from a Stable Bond
+#### Exiting from the Stable Bond
 
 At any time, this person could agree with their counter party to “roll” this contract forward (this is a 2-of-2 multisig so can be collaboratively closed and reopened - or "same again tomorrow").  
 
@@ -82,20 +105,7 @@ Failing that the contracts could be settled and they can simply open up another 
  
 Ideally the contract would also have a "closing term" which would allow the contract at that time with a small fee paid to the counter party as agreed on up-front.
 
-Let’s wave our magic wand and assume we fund and settle these contracts on lightning (TBD! Plent to do here).
-
-
-#### Secondary Market
-
-The idea here is that if we can establish DLC contracts that are routable between different users then we can now “sell our bUSD” into a secondary market for SATS! 
-
-So for instance lets say I agreed a 1 month contract for bitcoin against bUSD - which at any point in time is worth approximately XYZ amount of sats currently referenced by the price feed. 
-
-If we assume that right now we have a contract worth 100,000 sats we might expect to be able to trade out of that contract for up to 100,000 Sats if there is an active market of new users wanting CYM. 
-
-This market would require an order matching service and to facilitate the escrow services for the transfer and many different trust models could be utilized from centralized actors to peer to peer - [HOLD] much more thought required here. 
-
-However what this really allows is to people to enter and leave these contracts at will, assuming there is a liquid BTC/bUSD market and history tells us that “stable coin / BTC” markets tend to be pretty liquid particularly when deployed in a trust minimized or private manners. 
+Let’s wave our magic wand and assume we fund and settle these contracts on lightning (TBD! Plent to do here). [HOLD] - Flesh this out. 
 
 #### Transacting on bUSD
 
