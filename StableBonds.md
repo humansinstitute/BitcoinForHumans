@@ -14,13 +14,13 @@ I believe it is reasonable assertion in a trust minimized private market, which 
  
 This would allow any individual or institution (for example a community bank which wanted to offer USD denominated accounts on bitcoin native rails - e.g. offshore in Africa, South America) to elect to store a percentage of their bitcoin wealth in a "stable" form (defined as approximately pegged to the market exchange price of BTC/USD).  
 
-This capability could then support multiple initiatives to reduce the volatility and risk inherent in the earning and storing BTC when living in a hand to mouth fashion. I believe this in turn would allow easier adoption of bitcoin, where it is most needed, if individuals could earn "USD on native bitcoin rails" and then engage in native swaps to bitcoin, where they please, to facilitate long term savings.
+This capability could then support multiple initiatives to reduce the volatility master/and risk inherent in the earning and storing BTC when living in a hand to mouth fashion. I believe this in turn would allow easier adoption of bitcoin, where it is most needed, if individuals could earn "USD on native bitcoin rails" and then engage in native swaps to bitcoin, where they please, to facilitate long term savings.
 
 In order to facilitate transactions the users wallet would in real time settle the bond contract into the market and transact over lightning. If the merchant wanted to receive this in lightning, no further action is necessary. If however, they prefer dollar value, they can simply purchase a bond on the market.
 
 ![Community Bank Flow](https://raw.githubusercontent.com/humansinstitute/BitcoinForHumans/master/assets/stablebond-flow.gif)
 
-![Community Bank Flow - Animated version](https://raw.githubusercontent.com/humansinstitute/BitcoinForHumans/master/assets/stable-bond-flow.mp4)
+![Community Bank Flow - Animated higher res](https://raw.githubusercontent.com/humansinstitute/BitcoinForHumans/master/assets/stable-bond-flow.mp4)
 
 An example payment flow for a community bank and animated mp4 version. 
 
@@ -32,16 +32,16 @@ The name "stablebonds" was No tokens, all bitcoin collateralized channels. chose
 
 ## Overview
 
-![Overview diagram](https://raw.githubusercontent.com/humansinstitute/BitcoinForHumans/master/assets/stablebond-overview.jpg)
+![Community Bank Flow](https://raw.githubusercontent.com/humansinstitute/BitcoinForHumans/master/assets/stablebond-flow.jpg)
 
 The proposed stack would require several logical components. 
 
 * [[Stablebond-Wallet]]: This is an application sitting on top of, and integrating with, lightning and bitcoin nodes, ideally this could be added to existing wallets and application stacks (for example Sphinx.Chat) in order leverage existing identity, group and messaging infrastructure required to facilitate contract discovery, negotiation, execution and settlement.
 * [[Stable Bond Contract Format]]: This describes a standard contract and protocol for creating 1 day and 1 month bonds. Standardization of the contract, and potentially set amounts, would encourage routing of bond contracts as a means of creating liquid secondary markets and optionality for "coinage" e.g 1 / 5 / 10 dollar notes.  
-* [[Stable Bond Exchange Market]]: This is a virtual market place which represents market makers willing to take the long or short side of individuals seeking stability of long exposure. It is likely that multiple markets may segregate and emerge based on supported functionality and localities (e.g. Wallets in Nigeria working without KYC or un-banked population versus US based regulated wallets with full KYC for merchants).
+* [[Stable Bond Exchange Market]]: This is a virtual market place which matches market makers willing to take the long or short side of individuals seeking stability of long exposure. It is likely that multiple markets may segregate and emerge based on supported functionality and localities (e.g. Wallets in Nigeria working without KYC for un-banked population versus US based regulated wallets with full KYC for merchants).
 * [[BTCUSD Price Oracles]]: Any number of price Oracles could provide signed pricing messages in order to inform the DLC contract. 
 
-Stablebonds referred to as bUSD represent a fixed amount of USD exposure, created as a synthetic instrument between two peers in a discrete log contract. This is technically feasible now and contracts have already been executed on bitcoins main chain which have settled a stable dollar value bet with zero knowledge to the Oracle. 
+Stablebonds referred to as bUSD represent a fixed amount of USD exposure, created as a synthetic instrument between two peers in a discrete log contract. This is technically feasible now and contracts have already been executed on bitcoins main chain which have settled a [stable dollar value bet with zero knowledge to the Oracle](https://suredbits.com/settlement-of-first-multi-oracle-dlc/). 
 
 This is achievable now, however, there are several design considerations when looking to scale this to more people and create a tradeable (i.e. for products and services) currency.
 
