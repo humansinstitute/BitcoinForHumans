@@ -16,7 +16,13 @@ This would allow any individual or institution (for example a community bank whi
 
 This capability could then support multiple initiatives to reduce the volatility and risk inherent in the earning and storing BTC when living in a hand to mouth fashion. I believe this in turn would allow easier adoption of bitcoin, where it is most needed, if individuals could earn "USD on native bitcoin rails" and then engage in native swaps to bitcoin, where they please, to facilitate long term savings.
 
-In order to facilitate transactions the users wallet would in real time settle the bond contract into the market and transact over lightning. If the merchant wanted to receive this in lightning, no further action is necessary. If however, they prefer dollar value, they can simply purchase a bond on the market. 
+In order to facilitate transactions the users wallet would in real time settle the bond contract into the market and transact over lightning. If the merchant wanted to receive this in lightning, no further action is necessary. If however, they prefer dollar value, they can simply purchase a bond on the market.
+
+![Community Bank Flow](https://raw.githubusercontent.com/humansinstitute/BitcoinForHumans/master/assets/stablebond-flow.jpg)
+
+![Community Bank Flow](https://raw.githubusercontent.com/humansinstitute/BitcoinForHumans/master/assets/stable-bond-flow.mp4)
+
+An example payment flow for a community bank and animated mp4 version. 
 
 The name "stablebonds" was chosen as no coins were created and I was seeking some differentiation. Although I appreciate this isn't so much a bond in any true sense, however, this does act more in line with a peer to peer repo-market which generates cash from collateral. 
 
