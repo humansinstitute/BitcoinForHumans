@@ -20,7 +20,7 @@ In order to facilitate transactions the users wallet would in real time settle t
 
 ![Community Bank Flow](https://raw.githubusercontent.com/humansinstitute/BitcoinForHumans/master/assets/stablebond-flow.jpg)
 
-![Community Bank Flow](https://raw.githubusercontent.com/humansinstitute/BitcoinForHumans/master/assets/stable-bond-flow.mp4)
+![Community Bank Flow - Animated version](https://raw.githubusercontent.com/humansinstitute/BitcoinForHumans/master/assets/stable-bond-flow.mp4)
 
 An example payment flow for a community bank and animated mp4 version. 
 
