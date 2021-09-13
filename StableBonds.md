@@ -8,15 +8,17 @@ The core concept of Stable Bonds is that instead of utilizing a â€œbearer tokenâ
 
 In effect we create a market driven alternative model of the "auto-dollar-conversion" mechanism which has been proposed in El Salvador. 
 
-Were a deep liquid market to develop to offer this service on native bitcoin rails, we could onboard people directly to bitcoin the network, without volatility inherent in bitcoin the asset. 
+Were a deep liquid market to develop to offer this service on native bitcoin rails, we could onboard people directly to bitcoin the network, without the volatility inherent in bitcoin the asset. 
 
 I believe it is reasonable assertion in a trust minimized private market, which allows users to hold dollar denominated value without counter party risk. 
  
 This would allow any individual or institution (for example a community bank which wanted to offer USD denominated accounts on bitcoin native rails - e.g. offshore in Africa, South America) to elect to store a percentage of their bitcoin wealth in a "stable" form (defined as approximately pegged to the market exchange price of BTC/USD).  
 
-This capability could then support multiple initiatives to reduce the volatility master/and risk inherent in the earning and storing BTC when living in a hand to mouth fashion. I believe this in turn would allow easier adoption of bitcoin, where it is most needed, if individuals could earn "USD on native bitcoin rails" and then engage in native swaps to bitcoin, where they please, to facilitate long term savings.
+This capability could then reduce the volatility and risk inherent in the earning and storing BTC when living in a hand to mouth fashion. I believe this in turn would allow easier adoption of bitcoin, where it is most needed, if individuals could earn "USD on native bitcoin rails" and then engage in native swaps to bitcoin, where they please, to facilitate long term savings.
 
-In order to facilitate transactions the users wallet would in real time settle the bond contract into the market and transact over lightning. If the merchant wanted to receive this in lightning, no further action is necessary. If however, they prefer dollar value, they can simply purchase a bond on the market.
+If a user were holding stablebonds and wanted to perform a transaction the users wallet would in real time settle the bond contract into the market and transact over lightning. If the merchant wanted to receive this in lightning, no further action is necessary. If however, they prefer dollar value, they can simply purchase a bond on the market. 
+
+No tokens, all bitcoin collateralized channels.
 
 ![Community Bank Flow](https://raw.githubusercontent.com/humansinstitute/BitcoinForHumans/master/assets/stablebond-flow.gif)
 
@@ -24,7 +26,7 @@ In order to facilitate transactions the users wallet would in real time settle t
 
 An example payment flow for a community bank and animated mp4 version. 
 
-The name "stablebonds" was No tokens, all bitcoin collateralized channels. chosen as no coins were created and I was seeking some differentiation. Although I appreciate this isn't so much a bond in any true sense, however, this does act more in line with a peer to peer repo-market which generates cash from collateral. It's also a cheeky nod to the fact that nothing in bitcoin is really named properly (wallets, coins etc).
+The name "stablebonds" was chosen as no coins were created and I was seeking some differentiation. Although I appreciate this isn't so much a bond in any true sense, however, this does act more in line with a peer to peer repo-market which generates cash from collateral and has potnetial for a yield curve on difference length contracts so it kinda fits. It's also a cheeky nod to the fact that nothing in bitcoin is really named properly (wallets, coins etc).
 
 *(This is very much a draft and there are a lot of edge cases to talk through I think, but the basic concepts and I would welcome discussion - Pete)*
 
@@ -163,7 +165,7 @@ Required to be baked into the contract and executed by the relevant wallet as a 
 ### Yield? 
 Should there be a yield baked into the bond contract? Presumably this would be optional between parties, e.g. there is catastrophic loss risk for long side but not short, therefore you might expect the long sidde to expect some form of yield compensation for providing liquidity. 
 
-### Routing of Contracts
+### Routing of Contracts on Lightning
 
 ### The Role of Community Banks
 
