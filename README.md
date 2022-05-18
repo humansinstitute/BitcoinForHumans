@@ -6,6 +6,13 @@ This is all a work in progress and the idea is to begin building out a bit of an
 
 ---
 
+### Current State Architectures
+
+Cataloging a number of current state architectures to help explain the bitcoin world.
+
+* [Galoy Synthetic USD](GaloySyntheticUSD.md)
+* [Generic Peer to Peer Synthetic USD](Peer2PeerSyntheticUSD.md)
+
 ### Concepts
 
 * [Lockbox](lockbox/Lockbox.md): A framework for reliable, freemarket enforcement of deterministic contracts on bitcoin.
