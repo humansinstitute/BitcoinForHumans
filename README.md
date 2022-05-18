@@ -16,6 +16,7 @@ This is all a work in progress and the idea is to begin building out a bit of an
 ### Articles
 
 * [Smart Contracts will be hired](HireSmartContracts.md)
+* [Bitcoin for Humans Site](https://bitcoinforhumans.com)
 
 ### Thoughts
 
