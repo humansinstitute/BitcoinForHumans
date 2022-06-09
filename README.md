@@ -18,7 +18,7 @@ Cataloging a number of current state architectures to help explain the bitcoin w
 * [Layers and Emergent Properties](bitcoincake.md)
 * [StableBonds](StableBonds.md): An approach to community based bitcoin backed stable currencies (like a stablecoin but not)
 * **Tansferable Channels:** TBD - abilty to secure a specific channel with a secret which could be transfered to allow a 3rd party to steal a channel balance. 
-* [Community Banking - P2P Investment Markets](commbank_p2pinvest.md)
+* [Community Banking - P2P Investment Markets](commbank_p2p_capital.md)
 
 ### Articles
 
