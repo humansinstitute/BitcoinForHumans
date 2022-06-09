@@ -10,8 +10,7 @@ This is all a work in progress and the idea is to begin building out a bit of an
 
 Cataloging a number of current state architectures to help explain the bitcoin world.
 
-* [Galoy Synthetic USD](GaloySyntheticUSD.md)
-* [Generic Peer to Peer Synthetic USD](Peer2PeerSyntheticUSD.md)
+* [Galoy Synthetic USD](GaloySyntheticUSD.md) - TBD working through to work through current state architectre of Galoy stablesats.
 
 ### Concepts
 
@@ -19,6 +18,7 @@ Cataloging a number of current state architectures to help explain the bitcoin w
 * [Layers and Emergent Properties](bitcoincake.md)
 * [StableBonds](StableBonds.md): An approach to community based bitcoin backed stable currencies (like a stablecoin but not)
 * **Tansferable Channels:** TBD - abilty to secure a specific channel with a secret which could be transfered to allow a 3rd party to steal a channel balance. 
+* [Community Banking - P2P Investment Markets](commbank_p2pinvest.md)
 
 ### Articles
 
