@@ -1,4 +1,4 @@
-# Community Banking - P2P Investment Markets
+# Community Banking - P2P Capital Markets
 ### or 
 ## Real Yield > Potemkin Yield
 
@@ -24,9 +24,13 @@ This design revolves around three actors.
 
 1. The business owner
 2. The community bank
-3. the investor
+3. the Investor
 
 #### The Business Owner
+
+#### The Community Bank
+
+#### The Investor
 
 
 
