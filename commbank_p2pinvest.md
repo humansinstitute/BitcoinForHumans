@@ -1,5 +1,5 @@
 # Community Banking - P2P Investment Markets
-or 
+### or 
 ## Real Yield > Potemkin Yield
 
 There has recently been an awful lot of "rah rah" around the concept of volcano and bitcoin bonds.
@@ -14,6 +14,22 @@ To understand how people can use bitcoin to invest in captial formation where it
 
 Instead this design will make use of a network of private / community banks who can manage and mitigate credit risks and make this market.
 
+This will allow the global bitcoin industry to "put bitcoin to work" in order to create productive enterprises and drive real yield. 
+
+In many ways you could consider this the "real defi", decentralized peer to peer financing in order to drive real yields, from real businesses. 
+
 ---
+
+This design revolves around three actors. 
+
+1. The business owner
+2. The community bank
+3. the investor
+
+#### The Business Owner
+
+
+
+< HOLD - Insert HL Architecture of Soln >
 
 MORE TO FOLLOW
