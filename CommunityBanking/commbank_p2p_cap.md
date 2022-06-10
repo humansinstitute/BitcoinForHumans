@@ -70,6 +70,20 @@ In this situation the business accepting the loan, takes receipt of the funds fo
 
 ### Strategy - Leverage local banking knowledge and network 
 
+Local community banks provide a great opportunity to arrange, support and de risk peer to peer lending.
+
+The major risk is accentuated as the investor doesn't share a local jurisdiction with the business taking the loan.
+
+This is not true of local banks and even less so with community banks, which by design are inherently close.to and integrated in to the community.
+
+They are uniquely positioned to identify robust businesses and opportunities and make these available to the global bitcoin market.
+
+By sharing legal and community jurisdictions with the business seeking investment they can act on behalf.of the remote investor to ensure repayments are made.
+
+Of course nothing stops a community bank acting in concert with a business to defraud an investor, however it is significantly harder to "rug pull" an entire bank from a community and move it elsewhere. This bank defrauding investors would thus lose access to future capital and severely impact the community and local entrepreneurs who can apply pressure to keep things honest.
+
+Furthermore we can use further strategies to further mitigate these issues.
+
 ### Strategy - Streaming of loan funds
 
 ### Strategy - Recovery at Merchant PoS
