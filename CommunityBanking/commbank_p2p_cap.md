@@ -36,6 +36,12 @@ The process is expected to flow as follows:
 4. The bank assists the business with streaming repayments back to the investors - example this could be integrated with merchant services allowing a revenue split as income is generated. 
 5. Where repayments are not made or issues arrise confict resolution process could be followed between investornad bank.
 
+The process of making the loan, transfering funds and repayment is mechanically fairly simple, so whilst it will be documented it's unlikely to set anyones fire alight. 
+
+The elephant in the room however, is risk of default leaving the investor high and dry and losing funds that can't be recovered due to the irreversable nature of bitcoin transactions. 
+
+Whilst there is unlikely a simple silver bullet solution here, there are several strategies that can be taken to mitigate the risk which will be a large focus of this design. 
+
 ### Personas
 
 This design revolves around three actors. 
@@ -51,6 +57,26 @@ This design revolves around three actors.
 #### The Investor
 
 ### Example Scenarios
+
+---
+
+## Risks
+
+As indicated above this design has been heavily influenced by attempting to mitigate a number of risks. 
+
+### Risk: Credit Default
+
+In this situation the business accepting the loan, takes receipt of the funds for the loan and defaults on the repayments. Given the investor may be remote, anonymous or outside of the local jurisdiction there is little legal recourse they can take in order to receive funds.
+
+### Strategy - Leverage local banking knowledge and network 
+
+### Strategy - Streaming of loan funds
+
+### Strategy - Recovery at Merchant PoS
+
+### Strategy - Community bank posts bond 
+
+
 
 
 MORE TO FOLLOW
