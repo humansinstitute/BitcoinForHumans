@@ -6,11 +6,12 @@ This is all a work in progress and the idea is to begin building out a bit of an
 
 ---
 
-### Current State Architectures
+### Explainers
 
-Cataloging a number of current state architectures to help explain the bitcoin world.
+Cataloging how different bitcoin products / services work - trying to help explain the world of bitcoin.
 
 * [Galoy Synthetic USD](GaloySyntheticUSD.md) - TBD working through to work through current state architectre of Galoy stablesats.
+* [How Fedimint works](fedmintOverview.md) - Notes and diagram explainers on what is going on in fedimint (trust relationships, flows for payments etc).
 
 ### Concepts
 
